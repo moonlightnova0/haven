@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://nybans06ckps"]
+
+[ext_resource type="Script" uid="uid://cbcg7ke7kvsaw" path="res://scripts/intro.gd" id="1_ioskq"]
+[ext_resource type="VideoStream" uid="uid://h206uryw135m" path="res://media/SplitScreenIntro.ogv" id="2_yjqpq"]
+
+[node name="Node" type="Node" unique_id=450959707]
+script = ExtResource("1_ioskq")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=329350644]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stream = ExtResource("2_yjqpq")
+autoplay = true
+expand = true
+
+[node name="Timer" type="Timer" parent="." unique_id=772145773]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

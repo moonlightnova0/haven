@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bc4c7xres4et4"]
+
+[ext_resource type="Script" uid="uid://l4g6t7gqr5q" path="res://scripts/letter_tile.gd" id="1_mkkli"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2b0x"]
+bg_color = Color(0.058800004, 0.49, 0.20253341, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aifkk"]
+bg_color = Color(0.55, 0.53643334, 0.14299999, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02q5b"]
+bg_color = Color(0.48, 0.48, 0.48, 1)
+
+[node name="LetterTile" type="PanelContainer" unique_id=1761125628]
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_mkkli")
+
+[node name="Black" type="Panel" parent="." unique_id=467255290]
+layout_mode = 2
+
+[node name="Green" type="Panel" parent="." unique_id=164570005]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o2b0x")
+
+[node name="Yellow" type="Panel" parent="." unique_id=1624914545]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aifkk")
+
+[node name="Grey" type="Panel" parent="." unique_id=1824547296]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_02q5b")
+
+[node name="Letter" type="Label" parent="." unique_id=1660349006]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1

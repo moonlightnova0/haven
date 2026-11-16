@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dehf3ljp8wgpw"]
+
+[ext_resource type="Script" uid="uid://bvtr7e8hyuvwr" path="res://scripts/win_popup.gd" id="1_8cckr"]
+
+[node name="WinPopup" type="Window" unique_id=456412249]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(144, 100)
+wrap_controls = true
+exclusive = true
+unresizable = true
+borderless = true
+script = ExtResource("1_8cckr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1115954834]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 140.0
+offset_bottom = 96.0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=568893635]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/CenterContainer" unique_id=601508866]
+layout_mode = 2
+text = "Congratulations!"
+
+[node name="NewDateLabel" type="Label" parent="VBoxContainer" unique_id=1316967781]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Date changed to: "
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1438093148]
+layout_mode = 2
+text = "OK"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_close"]

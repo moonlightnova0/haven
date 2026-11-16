@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://wk6fj3j58exk"]
+
+[ext_resource type="Script" uid="uid://cxqdqhjuqruoe" path="res://scripts/desktop.gd" id="1_xxa2h"]
+[ext_resource type="Texture2D" uid="uid://6kjmu0l2ccfa" path="res://media/Image (12).png" id="2_veafp"]
+[ext_resource type="Texture2D" uid="uid://bhuqfrgbsjx6j" path="res://media/Image (13).png" id="3_pkmwo"]
+[ext_resource type="Texture2D" uid="uid://c0m1ia0jonwmr" path="res://media/Image (14).png" id="4_gl26t"]
+[ext_resource type="Texture2D" uid="uid://cb8flofavlpxr" path="res://media/play_button.png" id="5_vcvwy"]
+[ext_resource type="Texture2D" uid="uid://b8glamq1o11bx" path="res://media/wordle_icon.png" id="6_veafp"]
+[ext_resource type="Texture2D" uid="uid://c4588vt4ibn3g" path="res://media/pong_icon.png" id="7_q2hki"]
+
+[node name="Desktop" type="Node2D" unique_id=1397126777]
+script = ExtResource("1_xxa2h")
+
+[node name="Background" type="TextureRect" parent="." unique_id=208322535]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_veafp")
+
+[node name="Taskbar" type="TextureRect" parent="." unique_id=310231882]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_pkmwo")
+
+[node name="DateLabel" type="Label" parent="Taskbar" unique_id=317948026]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1069.0
+offset_top = 625.0
+offset_right = 1155.0
+offset_bottom = 648.0
+scale = Vector2(0.9, 0.9)
+text = "06/15/1689"
+horizontal_alignment = 2
+
+[node name="TimeLabel" type="Label" parent="Taskbar" unique_id=1141363871]
+layout_mode = 0
+offset_left = 1083.0
+offset_top = 608.0
+offset_right = 1153.0
+offset_bottom = 631.0
+scale = Vector2(0.9, 0.9)
+text = "12:53 PM"
+horizontal_alignment = 2
+
+[node name="UpdateButton" type="TextureButton" parent="Taskbar" unique_id=2048956425]
+layout_mode = 0
+offset_top = 589.0
+offset_right = 1024.0
+offset_bottom = 1165.0
+scale = Vector2(0.13565485, 0.13416049)
+texture_normal = ExtResource("4_gl26t")
+texture_pressed = ExtResource("4_gl26t")
+texture_hover = ExtResource("4_gl26t")
+
+[node name="PlayButton" type="TextureButton" parent="." unique_id=1843490724]
+offset_left = 178.0
+offset_top = 94.0
+offset_right = 1202.0
+offset_bottom = 670.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("5_vcvwy")
+texture_pressed = ExtResource("5_vcvwy")
+texture_hover = ExtResource("5_vcvwy")
+
+[node name="WordleButton" type="TextureButton" parent="." unique_id=946484925]
+offset_left = 809.00006
+offset_top = 238.0
+offset_right = 1833.0
+offset_bottom = 1262.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("6_veafp")
+texture_pressed = ExtResource("6_veafp")
+texture_hover = ExtResource("6_veafp")
+
+[node name="PongButton" type="TextureButton" parent="." unique_id=1333980435]
+offset_left = 235.0
+offset_top = 231.0
+offset_right = 1259.0
+offset_bottom = 1255.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("7_q2hki")
+texture_pressed = ExtResource("7_q2hki")
+texture_hover = ExtResource("7_q2hki")
+
+[node name="DateChanged" type="Window" parent="." unique_id=1268329527]
+unique_name_in_owner = true
+oversampling_override = 1.0
+size = Vector2i(129, 100)
+wrap_controls = true
+exclusive = true
+unresizable = true
+borderless = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DateChanged" unique_id=898117938]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 129.0
+offset_bottom = 97.0
+
+[node name="Label" type="Label" parent="DateChanged/VBoxContainer" unique_id=119888949]
+layout_mode = 2
+text = "Enter password:"
+
+[node name="Password" type="LineEdit" parent="DateChanged/VBoxContainer" unique_id=2002015938]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SubmitButton" type="Button" parent="DateChanged/VBoxContainer" unique_id=1550394905]
+layout_mode = 2
+text = "Submit"
+
+[node name="InvalidPassword" type="PopupPanel" parent="DateChanged" unique_id=97474719]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="DateChanged/InvalidPassword" unique_id=313123600]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 139.0
+offset_bottom = 96.0
+text = "Invalid password!"
+
+[node name="NoUpdates" type="PopupPanel" parent="." unique_id=61495030]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="NoUpdates" unique_id=905569235]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 171.0
+offset_bottom = 96.0
+text = "No updates available!"
+
+[connection signal="pressed" from="Taskbar/UpdateButton" to="." method="_on_update"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="WordleButton" to="." method="_on_wordle_button_pressed"]
+[connection signal="pressed" from="PongButton" to="." method="_on_pong_button_pressed"]
+[connection signal="pressed" from="DateChanged/VBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

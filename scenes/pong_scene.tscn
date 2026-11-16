@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://3wr5x2drhnq2"]
+
+[ext_resource type="Script" uid="uid://cnys81jmwtgqg" path="res://scripts/pong_scene.gd" id="1_ixxcj"]
+[ext_resource type="Script" uid="uid://cqrix4iudisgo" path="res://scripts/paddle.gd" id="2_cboh0"]
+[ext_resource type="Script" uid="uid://b2nglj0ox36uy" path="res://scripts/ball.gd" id="3_8kxpy"]
+[ext_resource type="PackedScene" uid="uid://dehf3ljp8wgpw" path="res://scenes/win_popup.tscn" id="4_r720o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdqh6"]
+size = Vector2(30, 160)
+
+[sub_resource type="Gradient" id="Gradient_y43b1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kf7jm"]
+gradient = SubResource("Gradient_y43b1")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdqh6"]
+radius = 32.01562
+
+[sub_resource type="Gradient" id="Gradient_r720o"]
+offsets = PackedFloat32Array(0, 0.68990386, 0.69471157, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5tto5"]
+gradient = SubResource("Gradient_r720o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kf7jm"]
+size = Vector2(79, 659)
+
+[sub_resource type="Gradient" id="Gradient_k7oiv"]
+colors = PackedColorArray(0, 1, 0, 1, 0.011764706, 1, 0.6627451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kf7jm"]
+gradient = SubResource("Gradient_k7oiv")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y43b1"]
+size = Vector2(31, 643.7707)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnjuj"]
+size = Vector2(1152, 20)
+
+[node name="PongScene" type="Node2D" unique_id=1922747280]
+script = ExtResource("1_ixxcj")
+
+[node name="Paddle" type="CharacterBody2D" parent="." unique_id=1720865643]
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("2_cboh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle" unique_id=1489789586]
+shape = SubResource("RectangleShape2D_xdqh6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Paddle/CollisionShape2D" unique_id=1920303017]
+position = Vector2(0, 1.9073486e-06)
+scale = Vector2(0.46875, 2.5)
+texture = SubResource("GradientTexture2D_kf7jm")
+
+[node name="Ball" type="CharacterBody2D" parent="." unique_id=50064250]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("3_8kxpy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=1172058725]
+shape = SubResource("CircleShape2D_xdqh6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball/CollisionShape2D" unique_id=963314858]
+texture = SubResource("GradientTexture2D_5tto5")
+
+[node name="WinDetector" type="Area2D" parent="." unique_id=1269280020]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinDetector" unique_id=1632853454]
+position = Vector2(29, 358.5)
+shape = SubResource("RectangleShape2D_kf7jm")
+
+[node name="Sprite2D" type="Sprite2D" parent="WinDetector" unique_id=1659672920]
+position = Vector2(34.500008, 324.125)
+scale = Vector2(0.26953128, 647.75)
+texture = SubResource("GradientTexture1D_kf7jm")
+
+[node name="Level" type="StaticBody2D" parent="." unique_id=1640969248]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level" unique_id=1535213760]
+position = Vector2(422.0446, 683.2355)
+rotation = -0.18716009
+shape = SubResource("RectangleShape2D_y43b1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level" unique_id=1507494958]
+position = Vector2(213, 159)
+rotation = -0.18716009
+shape = SubResource("RectangleShape2D_y43b1")
+
+[node name="Top" type="CollisionShape2D" parent="Level" unique_id=919169796]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_rnjuj")
+
+[node name="Bottom" type="CollisionShape2D" parent="Level" unique_id=911446688]
+position = Vector2(576, 658)
+shape = SubResource("RectangleShape2D_rnjuj")
+
+[node name="ColorRect" type="ColorRect" parent="Level" unique_id=510658840]
+offset_left = 138.0
+offset_top = -154.99998
+offset_right = 168.98341
+offset_bottom = 489.58545
+rotation = -0.18675023
+
+[node name="ColorRect2" type="ColorRect" parent="Level" unique_id=1986807476]
+offset_left = 347.0
+offset_top = 369.99997
+offset_right = 377.9834
+offset_bottom = 1014.58545
+rotation = -0.18675023
+
+[node name="Respawn" type="Timer" parent="." unique_id=812398251]
+unique_name_in_owner = true
+process_mode = 3
+wait_time = 0.4
+one_shot = true
+
+[node name="WinPopup" parent="." unique_id=243667828 instance=ExtResource("4_r720o")]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Respawn" to="Ball" method="_ready"]

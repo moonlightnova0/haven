@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dpi1oykyqptkt"]
+
+[ext_resource type="Script" uid="uid://ms25u6tvpaqt" path="res://scripts/wordle.gd" id="1_c1jua"]
+[ext_resource type="PackedScene" uid="uid://dehf3ljp8wgpw" path="res://scenes/win_popup.tscn" id="2_mxe1k"]
+
+[node name="Node2D" type="Node2D" unique_id=194414243]
+script = ExtResource("1_c1jua")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1386041629]
+
+[node name="WinPopup" parent="." unique_id=243667828 instance=ExtResource("2_mxe1k")]
+unique_name_in_owner = true
