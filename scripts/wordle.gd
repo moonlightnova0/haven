@@ -38,11 +38,11 @@ func _process(delta: float) -> void:
 	pass
 	
 func _input(event):
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode:
-		if event.keycode == KEY_BACKSPACE:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_BACKSPACE or event.physical_keycode == KEY_BACKSPACE:
 			if col >= 1: col -= 1
 			Global.letters[row][col] = ' '
-		elif event.keycode == KEY_ENTER:
+		elif event.keycode == KEY_ENTER or event.physical_keycode == KEY_ENTER:
 			if col == 5:
 				var guess = ''.join(Global.letters[row])
 				if guess not in valid_words: return
@@ -61,7 +61,7 @@ func _input(event):
 						pass # lose
 						# kicked out?
 					print(row)
-		elif col <= 4 and ((event.unicode >= 65 and event.unicode <= 90) or (event.unicode >= 97 and event.unicode <= 122)):
+		elif col <= 4 and ((event.unicode >= 65 and event.unicode <= 90) or (event.unicode >= 97 and event.unicode <= 122)) and not Global.letters.is_empty():
 			Global.letters[row][col] = char(event.unicode)
 			col += 1
 		
